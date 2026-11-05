@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
+import type { ImagePair } from '@/lib/projectTypes'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { PinnedStage } from '@/components/home/PinnedStage'
 import { Hero } from '@/components/home/Hero'
 import { FeaturedServices } from '@/components/home/FeaturedServices'
-import { BeforeAfterSlider } from '@/components/home/BeforeAfterSlider'
 import { Testimonials } from '@/components/home/Testimonials'
 import { CTASection } from '@/components/home/CTASection'
 import { WorkSeam } from '@/components/home/WorkSeam'
@@ -12,6 +13,14 @@ import { TestimonialGutter } from '@/components/home/TestimonialGutter'
 import { ProofBand } from '@/components/home/ProofBand'
 import { LastPhotograph } from '@/components/home/LastPhotograph'
 import { getFeaturedProjects } from '@/lib/projects'
+
+const BeforeAfterSlider = dynamic<{ pairs?: ImagePair[]; projectTitle?: string }>(
+  async () => {
+    const mod = await import('@/components/home/BeforeAfterSlider')
+    return mod.BeforeAfterSlider
+  },
+  { loading: () => <div className="h-96 bg-gray-200 rounded-xl animate-pulse" /> },
+)
 
 export const metadata: Metadata = {
   title: 'BrushStroke Pro | Professional Painting Services',
