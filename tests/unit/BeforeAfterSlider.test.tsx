@@ -19,10 +19,9 @@ describe('BeforeAfterSlider Component', () => {
     expect(screen.getByText('After')).toBeInTheDocument()
   })
 
-  it('renders custom labels', () => {
-    render(<BeforeAfterSlider beforeLabel="Original" afterLabel="New Look" />)
-    expect(screen.getByText('Original')).toBeInTheDocument()
-    expect(screen.getByText('New Look')).toBeInTheDocument()
+  it('renders project title when provided', () => {
+    render(<BeforeAfterSlider projectTitle="Rosemary Needham" />)
+    expect(screen.getByText('Rosemary Needham')).toBeInTheDocument()
   })
 
   it('renders the slider input', () => {
@@ -45,7 +44,26 @@ describe('BeforeAfterSlider Component', () => {
 
   it('renders images with correct alt text', () => {
     render(<BeforeAfterSlider />)
-    expect(screen.getByAltText('Before')).toBeInTheDocument()
-    expect(screen.getByAltText('After')).toBeInTheDocument()
+    expect(screen.getByAltText(/Before:/)).toBeInTheDocument()
+    expect(screen.getByAltText(/After:/)).toBeInTheDocument()
+  })
+
+  it('shows pair count when multiple pairs provided', () => {
+    const pairs = [
+      { id: '1', before: '/b1.jpg', after: '/a1.jpg', caption: 'Room 1' },
+      { id: '2', before: '/b2.jpg', after: '/a2.jpg', caption: 'Room 2' },
+    ]
+    render(<BeforeAfterSlider pairs={pairs} />)
+    expect(screen.getByText(/Showing 1 of 2 areas/)).toBeInTheDocument()
+  })
+
+  it('shows navigation dots when multiple pairs provided', () => {
+    const pairs = [
+      { id: '1', before: '/b1.jpg', after: '/a1.jpg', caption: 'Room 1' },
+      { id: '2', before: '/b2.jpg', after: '/a2.jpg', caption: 'Room 2' },
+    ]
+    render(<BeforeAfterSlider pairs={pairs} />)
+    expect(screen.getByLabelText('Go to image 1')).toBeInTheDocument()
+    expect(screen.getByLabelText('Go to image 2')).toBeInTheDocument()
   })
 })
