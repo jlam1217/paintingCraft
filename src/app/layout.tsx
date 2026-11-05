@@ -1,10 +1,23 @@
 import type { Metadata } from 'next'
+import { Red_Hat_Display, Red_Hat_Text } from 'next/font/google'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { StructuredData } from '@/components/seo/StructuredData'
 import { SkipLink } from '@/components/a11y/SkipLink'
 import { ThemeProvider } from '@/components/theme/ThemeProvider'
 import './globals.css'
+
+const redHatDisplay = Red_Hat_Display({
+  subsets: ['latin'],
+  weight: '900',
+  variable: '--font-red-hat-display',
+})
+
+const redHatText = Red_Hat_Text({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-red-hat-text',
+})
 
 export const metadata: Metadata = {
   title: 'BrushStroke Pro | Professional Painting Services',
@@ -42,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className="h-full antialiased"
+      className={`${redHatDisplay.variable} ${redHatText.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>

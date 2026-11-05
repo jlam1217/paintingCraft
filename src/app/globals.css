@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-/* Google Fonts: Red Hat Display and Red Hat Text */
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@900&family=Red+Hat+Text:wght@400;500&display=swap');
-
 /* The design system palette: cobalt on sand */
 @theme inline {
   --color-sand: #e6dbc7;
