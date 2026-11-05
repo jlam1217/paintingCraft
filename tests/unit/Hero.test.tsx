@@ -4,9 +4,11 @@ import { Hero } from '@/components/home/Hero'
 
 // Mock next/link
 jest.mock('next/link', () => {
-  return ({ children, ...props }: React.PropsWithChildren<Record<string, string>>) => (
+  const MockLink = ({ children, ...props }: React.PropsWithChildren<Record<string, string>>) => (
     <a {...props}>{children}</a>
   )
+  MockLink.displayName = 'NextLink'
+  return MockLink
 })
 
 describe('Hero Component', () => {

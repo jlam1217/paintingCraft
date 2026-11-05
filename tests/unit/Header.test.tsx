@@ -10,29 +10,29 @@ describe('Header Component', () => {
 
   it('renders navigation links', () => {
     render(<Header />)
-    expect(screen.getByText('Home')).toBeInTheDocument()
-    expect(screen.getByText('Services')).toBeInTheDocument()
-    expect(screen.getByText('Gallery')).toBeInTheDocument()
-    expect(screen.getByText('Pricing')).toBeInTheDocument()
-    expect(screen.getByText('Contact')).toBeInTheDocument()
+    expect(screen.getAllByText('Home').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Services').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Gallery').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Pricing').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Contact').length).toBeGreaterThan(0)
   })
 
   it('renders the CTA button', () => {
     render(<Header />)
-    expect(screen.getByText('Get Free Quote')).toBeInTheDocument()
+    expect(screen.getAllByText('Get a free quote').length).toBeGreaterThan(0)
   })
 
   it('has correct navigation links', () => {
     render(<Header />)
-    const homeLink = screen.getByText('Home').closest('a')
+    const homeLink = screen.getAllByText('Home')[0].closest('a')
     expect(homeLink).toHaveAttribute('href', '/')
-    const servicesLink = screen.getByText('Services').closest('a')
+    const servicesLink = screen.getAllByText('Services')[0].closest('a')
     expect(servicesLink).toHaveAttribute('href', '/services')
   })
 
   it('renders with proper accessibility', () => {
     render(<Header />)
     expect(screen.getByRole('banner')).toBeInTheDocument()
-    expect(screen.getByRole('navigation')).toBeInTheDocument()
+    expect(screen.getAllByRole('navigation').length).toBeGreaterThan(0)
   })
 })

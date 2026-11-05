@@ -3,9 +3,11 @@ import { render, screen } from '@testing-library/react'
 import { CTASection } from '@/components/home/CTASection'
 
 jest.mock('next/link', () => {
-  return ({ children, ...props }: React.PropsWithChildren<Record<string, string>>) => (
+  const MockLink = ({ children, ...props }: React.PropsWithChildren<Record<string, string>>) => (
     <a {...props}>{children}</a>
   )
+  MockLink.displayName = 'NextLink'
+  return MockLink
 })
 
 describe('CTASection Component', () => {

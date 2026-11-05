@@ -4,9 +4,11 @@ import { FeaturedServices } from '@/components/home/FeaturedServices'
 import { SERVICES } from '@/lib/constants'
 
 jest.mock('next/link', () => {
-  return ({ children, ...props }: React.PropsWithChildren<Record<string, string>>) => (
+  const MockLink = ({ children, ...props }: React.PropsWithChildren<Record<string, string>>) => (
     <a {...props}>{children}</a>
   )
+  MockLink.displayName = 'NextLink'
+  return MockLink
 })
 
 describe('FeaturedServices Component', () => {

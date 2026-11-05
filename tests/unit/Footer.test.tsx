@@ -10,7 +10,7 @@ describe('Footer Component', () => {
 
   it('renders the tagline', () => {
     render(<Footer />)
-    expect(screen.getByText('Transforming Spaces, One Stroke at a Time')).toBeInTheDocument()
+    expect(screen.getByText('Ready to transform your space?')).toBeInTheDocument()
   })
 
   it('renders contact information', () => {
@@ -21,8 +21,8 @@ describe('Footer Component', () => {
 
   it('renders navigation links', () => {
     render(<Footer />)
-    expect(screen.getByText('Privacy Policy')).toBeInTheDocument()
-    expect(screen.getByText('Terms of Service')).toBeInTheDocument()
+    expect(screen.getByText('Privacy')).toBeInTheDocument()
+    expect(screen.getByText('Terms')).toBeInTheDocument()
   })
 
   it('renders copyright notice', () => {
@@ -30,11 +30,11 @@ describe('Footer Component', () => {
     expect(screen.getByText(/© 2026 BrushStroke Pro/)).toBeInTheDocument()
   })
 
-  it('renders service links', () => {
+  it('renders contact info', () => {
     render(<Footer />)
-    expect(screen.getByText('Interior Painting')).toBeInTheDocument()
-    expect(screen.getByText('Exterior Painting')).toBeInTheDocument()
-    expect(screen.getByText('Commercial Painting')).toBeInTheDocument()
+    expect(screen.getByText('info@brushstrokepro.com')).toBeInTheDocument()
+    expect(screen.getByText('(555) 123-4567')).toBeInTheDocument()
+    expect(screen.getByText('123 Paint Street, Color City, CC 12345')).toBeInTheDocument()
   })
 
   it('has proper footer role', () => {

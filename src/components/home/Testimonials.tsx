@@ -13,7 +13,7 @@ export function Testimonials() {
             What Our Customers Say
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-            Don't just take our word for it. Hear from homeowners who transformed their spaces with us.
+            Don&apos;t just take our word for it. Hear from homeowners who transformed their spaces with us.
           </p>
         </div>
 
