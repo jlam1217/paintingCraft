@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft } from 'lucide-react'
 import { BeforeAfterSlider } from '@/components/home/BeforeAfterSlider'
-import { getProject } from '@/lib/projects'
+import { getProject, getProjectsByCategory } from '@/lib/projects'
 
 export default function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params)
@@ -15,6 +15,10 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
   if (!project) {
     notFound()
   }
+
+  const relatedProjects = getProjectsByCategory(project.category).filter(
+    (p) => p.slug !== project.slug
+  )
 
   return (
     <div className="bg-white min-h-screen">
@@ -110,6 +114,63 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                     <p className="text-sm font-medium text-gray-700">{pair.caption}</p>
                   </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CTA: Get a quote for similar work */}
+      <section className="py-16 bg-[#062b8a] text-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold sm:text-4xl mb-4">
+            Love this transformation?
+          </h2>
+          <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
+            Get a free quote for your own painting project. We&apos;ll bring the same
+            care and attention to your space.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-8 py-3 text-base font-semibold text-[#062b8a] shadow-lg hover:shadow-xl transition-all"
+          >
+            Get Free Quote
+            <ArrowLeft className="h-5 w-5 rotate-180" />
+          </Link>
+        </div>
+      </section>
+
+      {/* Related Projects */}
+      {relatedProjects.length > 0 && (
+        <section className="py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-[#484848] text-center mb-10">
+              Related Projects
+            </h2>
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {relatedProjects.map((related) => (
+                <Link
+                  key={related.slug}
+                  href={`/projects/${related.slug}`}
+                  className="group block"
+                >
+                  <div className="relative aspect-[4/3] bg-gray-200 overflow-hidden rounded-xl">
+                    <Image
+                      fill
+                      src={related.pairs[0]?.after}
+                      alt={related.title}
+                      className="object-cover transition-transform group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <h3 className="text-lg font-bold text-[#484848] group-hover:text-[#FF5A5F] transition-colors">
+                      {related.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-gray-600">{related.description}</p>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
