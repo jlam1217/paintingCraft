@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { NAV_ITEMS, BUSINESS_NAME } from '@/lib/constants'
+import { ThemeToggle } from '@/components/theme/ThemeToggle'
 
 export function Header() {
   const [open, setOpen] = useState(false)
@@ -26,6 +27,7 @@ export function Header() {
           <Link href="/contact" className="btn">
             Get a free quote
           </Link>
+          <ThemeToggle />
         </div>
 
         <button

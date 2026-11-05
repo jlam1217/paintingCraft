@@ -84,7 +84,6 @@ export function BeforeAfterSlider({
                     sizes="(max-width: 768px) 100vw, 640px"
                     loading="eager"
                     priority
-                    style={{ width: `${100 / (sliderPosition / 100)}%`, maxWidth: 'none' }}
                   />
                 </div>
                 <div className="absolute inset-y-0 left-0 right-0 flex items-center">

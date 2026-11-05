@@ -3,6 +3,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { StructuredData } from '@/components/seo/StructuredData'
 import { SkipLink } from '@/components/a11y/SkipLink'
+import { ThemeProvider } from '@/components/theme/ThemeProvider'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -44,11 +45,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className="h-full antialiased"
     >
       <body className="min-h-full flex flex-col">
-        <StructuredData />
-        <SkipLink />
-        <Header />
-        <main id="main-content" aria-label="Main content" className="flex-1">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <StructuredData />
+          <SkipLink />
+          <Header />
+          <main id="main-content" aria-label="Main content" className="flex-1">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )
