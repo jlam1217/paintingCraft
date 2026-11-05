@@ -40,7 +40,13 @@ export function Header() {
         </button>
       </div>
 
-      <div id="mobile-nav" className="site-header__sheet" role="navigation" aria-label="Mobile">
+      <nav
+        id="mobile-nav"
+        className={`site-header__sheet ${!open ? 'hidden' : ''}`}
+        role="navigation"
+        aria-label="Mobile"
+        hidden={!open}
+      >
         {NAV_ITEMS.map((item) => (
           <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>
             {item.label}
@@ -49,7 +55,7 @@ export function Header() {
         <Link href="/contact" className="btn" onClick={() => setOpen(false)}>
           Get a free quote
         </Link>
-      </div>
+      </nav>
     </header>
   )
 }
