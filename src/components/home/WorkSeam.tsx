@@ -71,7 +71,7 @@ export function WorkSeam() {
               alt="Room before the painting"
               fill
               className="seam__img"
-              style={{ objectFit: 'cover', top: '-20%', height: '140%' }}
+              style={{ objectFit: 'cover', top: '-20%' }}
               sizes="50vw"
             />
           </div>
@@ -81,7 +81,7 @@ export function WorkSeam() {
               alt="Room after the painting"
               fill
               className="seam__img"
-              style={{ objectFit: 'cover', top: '-20%', height: '140%' }}
+              style={{ objectFit: 'cover', top: '-20%' }}
               sizes="50vw"
             />
           </div>
