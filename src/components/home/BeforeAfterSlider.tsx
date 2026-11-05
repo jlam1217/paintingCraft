@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ArrowLeftRight, ChevronLeft, ChevronRight } from 'lucide-react'
+import Image from 'next/image'
 import type { ImagePair } from '@/lib/projectTypes'
 
 interface BeforeAfterSliderProps {
@@ -65,21 +66,25 @@ export function BeforeAfterSlider({
           <div className="relative mx-auto max-w-4xl">
             <div className="relative overflow-hidden rounded-2xl shadow-xl">
               <div className="relative aspect-video">
-                <img
+                <Image
+                  fill
                   src={displayAfter}
                   alt={`After: ${displayCaption || 'Painted'}`}
                   className="absolute inset-0 h-full w-full object-cover"
-                  draggable={false}
+                  sizes="(max-width: 768px) 100vw, 640px"
                   loading="eager"
+                  priority
                 />
                 <div className="absolute inset-0 overflow-hidden" style={{ width: `${sliderPosition}%` }}>
-                  <img
+                  <Image
+                    fill
                     src={displayBefore}
                     alt={`Before: ${displayCaption || 'Original'}`}
-                    className="h-full w-full object-cover"
-                    style={{ width: `${100 / (sliderPosition / 100)}%`, maxWidth: 'none' }}
-                    draggable={false}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    sizes="(max-width: 768px) 100vw, 640px"
                     loading="eager"
+                    priority
+                    style={{ width: `${100 / (sliderPosition / 100)}%`, maxWidth: 'none' }}
                   />
                 </div>
                 <div className="absolute inset-y-0 left-0 right-0 flex items-center">

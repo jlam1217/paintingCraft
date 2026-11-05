@@ -5,6 +5,7 @@ import { GALLERY_CATEGORIES } from '@/lib/constants'
 import { PROJECTS, getProjectsByCategory } from '@/lib/projects'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState('all')
@@ -67,21 +68,22 @@ export default function GalleryPage() {
                   {/* Before/After Preview */}
                   <div className="relative aspect-[4/3]">
                     {/* After image (full) */}
-                    <img
+                    <Image
+                      fill
                       src={project.pairs[0]?.after}
                       alt={`${project.title} - After`}
                       className="absolute inset-0 h-full w-full object-cover"
-                      draggable={false}
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       loading="lazy"
                     />
                     {/* Before image (left half) */}
                     <div className="absolute inset-y-0 left-0 w-1/2 overflow-hidden">
-                      <img
+                      <Image
+                        fill
                         src={project.pairs[0]?.before}
                         alt={`${project.title} - Before`}
-                        className="h-full w-full object-cover"
-                        style={{ width: '200%' }}
-                        draggable={false}
+                        className="absolute inset-0 h-full w-full object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
                         loading="lazy"
                       />
                     </div>

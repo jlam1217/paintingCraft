@@ -3,6 +3,7 @@
 import { use } from 'react'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft } from 'lucide-react'
 import { BeforeAfterSlider } from '@/components/home/BeforeAfterSlider'
 import { getProject } from '@/lib/projects'
@@ -79,20 +80,21 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
               {project.pairs.map((pair) => (
                 <div key={pair.id} className="rounded-xl bg-white shadow-sm overflow-hidden">
                   <div className="relative aspect-[4/3]">
-                    <img
+                    <Image
+                      fill
                       src={pair.after}
                       alt={`${pair.caption} - After`}
                       className="absolute inset-0 h-full w-full object-cover"
-                      draggable={false}
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       loading="lazy"
                     />
                     <div className="absolute inset-y-0 left-0 w-1/2 overflow-hidden">
-                      <img
+                      <Image
+                        fill
                         src={pair.before}
                         alt={`${pair.caption} - Before`}
-                        className="h-full w-full object-cover"
-                        style={{ width: '200%' }}
-                        draggable={false}
+                        className="absolute inset-0 h-full w-full object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
                         loading="lazy"
                       />
                     </div>
