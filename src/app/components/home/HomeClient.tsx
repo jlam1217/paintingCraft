@@ -93,12 +93,12 @@ function Hero() {
       </div>
 
       <div className="absolute bottom-0 left-0 z-10" style={{ padding: '30px', width: '100%', boxSizing: 'border-box', display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '0' }}>
-        <div className="hidden lg:block" style={{ gridColumn: '1 / 10' }}>
+        <div style={{ gridColumn: '1 / 13' }}>
           <h1 className="font-display uppercase tracking-tight leading-tight entrance" style={{ fontSize: 'clamp(28px, 2.5vw, 40px)', fontWeight: 500, lineHeight: 1, margin: 0, color: 'var(--color-ink)' }}>
             Interiors transformed
           </h1>
         </div>
-        <div className="hidden lg:block" style={{ gridColumn: '10 / 13', display: 'flex', alignItems: 'end', justifyContent: 'end', paddingBottom: '6px' }}>
+        <div style={{ gridColumn: '1 / 13', marginTop: '12px', display: 'flex', alignItems: 'end', justifyContent: 'flex-start', paddingBottom: '6px' }}>
           <p className="entrance" style={{ fontSize: '16px', fontFamily: 'var(--font-text)', color: 'var(--color-muted)', maxWidth: '24ch', margin: 0, lineHeight: 1.5 }}>Rooms lit from shadow.</p>
         </div>
       </div>
