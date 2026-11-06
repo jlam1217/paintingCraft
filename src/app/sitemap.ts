@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { PROJECTS } from '@/lib/projects'
 import { NAV_ITEMS } from '@/lib/constants'
+import { getAllServices } from '@/lib/data'
 
 const baseUrl = 'https://brushstrokepro.com'
 
@@ -19,5 +20,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...staticRoutes, ...projectRoutes]
+  const serviceRoutes = getAllServices().map((service) => ({
+    url: `${baseUrl}/services/${service.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
+  const extraRoutes = ['/reviews', '/faq', '/service-areas'].map((path) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
+
+  return [...staticRoutes, ...projectRoutes, ...serviceRoutes, ...extraRoutes]
 }
+

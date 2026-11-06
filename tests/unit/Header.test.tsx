@@ -13,7 +13,7 @@ describe('Header Component', () => {
     expect(screen.getAllByText('Home').length).toBeGreaterThan(0)
     expect(screen.getAllByText('Services').length).toBeGreaterThan(0)
     expect(screen.getAllByText('Gallery').length).toBeGreaterThan(0)
-    expect(screen.getAllByText('Pricing').length).toBeGreaterThan(0)
+    expect(screen.getAllByText('Reviews').length).toBeGreaterThan(0)
     expect(screen.getAllByText('Contact').length).toBeGreaterThan(0)
   })
 
