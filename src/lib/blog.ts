@@ -9,7 +9,10 @@ export interface BlogPost {
   author: string
 }
 
+import { ADDITIONAL_POSTS } from '@/lib/data/blog-posts'
+
 export const BLOG_POSTS: BlogPost[] = [
+  ...ADDITIONAL_POSTS,
   {
     slug: 'choosing-right-paint-colors',
     title: 'Choosing the Right Paint Colors for Your Home',

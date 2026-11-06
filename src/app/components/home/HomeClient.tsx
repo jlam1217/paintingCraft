@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { Header } from '@/components/layout/Header'
+import { QuoteCalculator } from '@/components/quote/QuoteCalculator'
 import { getProject } from '@/lib/projects'
 
 const project = getProject('RosemaryNeedham')
@@ -279,6 +280,16 @@ export function HomeClient() {
           <p style={{ fontSize: '17px', fontFamily: 'var(--font-text)', lineHeight: 1.6, color: 'var(--color-ink)', margin: '0 0 16px 0', maxWidth: '30ch' }}>Interior and exterior painting since 2009.</p>
           <p style={{ fontSize: '22px', fontFamily: 'var(--font-text)', fontWeight: 500, lineHeight: 1.2, color: 'var(--color-ink)', margin: '0 0 24px 0' }}>Free colour consultation.</p>
           <a href="mailto:info@brushstrokepro.com?subject=Free colour consultation&body=I&rsquo;d like to book a free colour consultation for my interior/exterior painting project." className="btn" style={{ padding: '12px 28px', fontSize: '14px' }}>Book a visit</a>
+        </div>
+      </section>
+
+      {/* Quote Calculator — the live thing */}
+      <section id="quote" className="relative" style={{ padding: '120px var(--margin)', background: 'var(--color-ground)' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <h2 className="font-display uppercase tracking-tight" style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 500, lineHeight: 1, margin: '0 0 32px', color: 'var(--color-ink)', textAlign: 'center' }}>
+            Get an instant estimate
+          </h2>
+          <QuoteCalculator />
         </div>
       </section>
 

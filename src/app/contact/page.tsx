@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { QuoteCalculator } from '@/components/quote/QuoteCalculator'
 import { z } from 'zod'
 
 const contactSchema = z.object({
@@ -67,6 +68,10 @@ export default function ContactPage() {
         <p style={{ fontSize: '18px', fontFamily: 'var(--font-text)', color: 'var(--color-muted)', marginTop: '16px' }}>
           Get a free quote — text us, call us, or fill out the form below.
         </p>
+      </section>
+
+      <section style={{ padding: '0 var(--margin) 60px', maxWidth: '800px', margin: '0 auto' }}>
+        <QuoteCalculator />
       </section>
 
       <section style={{ padding: '0 var(--margin) 120px', maxWidth: '800px', margin: '0 auto' }}>
